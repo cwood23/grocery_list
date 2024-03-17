@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="page_header">
+        <h1 class="header-text">Grocery List</h1>
+    </div>
+    <table class="list-table">
+        <thead>
+            <tr class="list-header-row">
+                <th class="list-header">Item</th>
+                <th class="list-header">Price</th>
+                <th class="list-header">Qty</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="list-item-row">
+                <td class="list-item">Apples</td>
+                <td class="list-item">$4.49</td>
+                <td class="list-item">3</td>
+                <td>
+                    <button>X</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="list-item">Steak</td>
+                <td class="list-item">$9.99</td>
+                <td class="list-item">2</td>
+                <td>
+                    <button>X</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="list-item">Lettuce</td>
+                <td class="list-item">$3.99</td>
+                <td class="list-item">1</td>
+                <td>
+                    <button>X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <label>Name: </label>
+        <input type="text" name="name" id="name" required />
+        <label>Price: </label>
+        <input type="text" name="price" id="price" />
+    </div>
+    <div>
+        <input type="submit" id="addItemBtn" value="Add Item" />
+    </div>
+</body>
+
+</html>
