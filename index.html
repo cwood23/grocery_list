@@ -2,14 +2,13 @@
 
 <head>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
 </head>
 
 <body>
     <div class="page_header">
         <h1 class="header-text">Grocery List</h1>
     </div>
-    <table class="list-table">
+    <table class="list-table" id="itemTable">
         <thead>
             <tr class="list-header-row">
                 <th class="list-header">Item</th>
@@ -19,26 +18,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="list-item-row">
-                <td class="list-item">Apples</td>
-                <td class="list-item">$4.49</td>
-                <td class="list-item">3</td>
-                <td>
-                    <button class="delete-btn">X</button>
-                </td>
-            </tr>
-            <tr class="list-item-row">
-                <td class="list-item">Steak</td>
-                <td class="list-item">$9.99</td>
-                <td class="list-item">2</td>
-                <td>
-                    <button class="delete-btn">X</button>
-                </td>
-            </tr>
-            <tr class="list-item-row">
-                <td class="list-item">Lettuce</td>
-                <td class="list-item">$3.99</td>
-                <td class="list-item">2</td>
+            <tr>
+                <td>Apples</td>
+                <td>$4.49</td>
+                <td>3</td>
                 <td>
                     <button class="delete-btn">X</button>
                 </td>
@@ -48,15 +31,28 @@
 
     <br />
 
-    <div class="input-div">
-        <label class="input-label">Name:</label>
-        <input class="input-box" type="text" name="name" id="name" required />
-        <label class="input-label">Price:</label>
-        <input class="input-box" type="text" name="price" id="price" />
-    </div>
-    <div class="btn-div">
-        <input class="add-btn" type="submit" id="addItemBtn" value="Add Item" />
-    </div>
+    <form action="" id="newItemForm">
+        <div class="input-div">
+            <div>
+                <label class="input-label">Name:</label>
+                <input class="input-box" type="text" name="name" id="name" required />
+            </div>
+            <div>
+                <label class="input-label">Price:</label>
+                <input class="input-box" type="text" name="price" id="price" />
+            </div>
+            <div>
+                <label class="input-label">Quantity:</label>
+                <input class="input-box" type="text" name="quantity" id="quantity" />
+            </div>
+        </div>
+        <div class="btn-div">
+            <input class="add-btn" type="submit" id="addItemBtn" value="Add Item" />
+        </div>
+    </form>
+
+    
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

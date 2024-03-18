@@ -18,6 +18,17 @@ body {
     border-collapse: collapse;
     width: 100%;
     margin: auto;
+
+    tr {
+        text-align: left;
+        background-color: white;
+    }
+    tr:nth-child(even){background-color: lightgray}
+
+    td {
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }
 
 .list-header-row {
@@ -32,18 +43,6 @@ body {
     padding: 10px;
 }
 
-.list-item-row {
-    text-align: left;
-    background-color: white;
-}
-
-.list-item-row:nth-child(even){background-color: lightgray}
-
-.list-item {
-    font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .delete-btn {
     font-size: 50px;
     border: none;
@@ -53,9 +52,8 @@ body {
 }
 
 .input-div {
-    width: 100%;
-    margin: auto;
-    text-align: center;
+    display: grid;
+    row-gap: 20px;
 }
 
 .input-label {
