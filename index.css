@@ -5,16 +5,13 @@ body {
 .page_header {
     background-color: maroon;
     text-align: center;
+    margin: 10px 20px;
 }
 
 .header-text {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 7rem;
-}
-
-table, th {
-    border: 1px solid black;
 }
 
 .list-table {
@@ -24,17 +21,66 @@ table, th {
 }
 
 .list-header-row {
-    text-align: center;
+    text-align: left;
 }
 
 .list-header {
     font-size: 80px;
+    background-color: maroon;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
 }
 
 .list-item-row {
-    text-align: center
+    text-align: left;
+    background-color: white;
 }
+
+.list-item-row:nth-child(even){background-color: lightgray}
 
 .list-item {
     font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.delete-btn {
+    font-size: 50px;
+    border: none;
+    background-color: transparent;
+    color: maroon;
+    padding: auto;
+}
+
+.input-div {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.input-label {
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-box {
+    font-size: 40px;
+    width: 300px;
+    margin: 0px 15px;
+    background-color: rgb(233, 233, 233);
+}
+
+.btn-div {
+    text-align: center;
+}
+
+.add-btn {
+    font-size: 50px;
+    background-color: maroon;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
 }
