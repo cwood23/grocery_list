@@ -14,17 +14,16 @@
                 <th class="list-header">Item</th>
                 <th class="list-header">Price</th>
                 <th class="list-header">Qty</th>
+                <th class="list-header">Total</th>
                 <th class="list-header"></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Apples</td>
-                <td>$4.49</td>
-                <td>3</td>
-                <td>
-                    <button class="delete-btn">X</button>
-                </td>
+                <td>Total</td>
+                <td></td>
+                <td id="totalQuantity">0</td>
+                <td id="totalPrice">0</td>
             </tr>
         </tbody>
     </table>
@@ -34,16 +33,16 @@
     <form action="" id="newItemForm">
         <div class="input-div">
             <div>
-                <label class="input-label">Name:</label>
+                <label class="input-label">Name: </label>
                 <input class="input-box" type="text" name="name" id="name" required />
             </div>
             <div>
-                <label class="input-label">Price:</label>
-                <input class="input-box" type="text" name="price" id="price" />
+                <label class="input-label">Price: $</label>
+                <input class="input-box" type="number" name="price" id="price" min="0" step=".01" />
             </div>
             <div>
-                <label class="input-label">Quantity:</label>
-                <input class="input-box" type="text" name="quantity" id="quantity" />
+                <label class="input-label">Quantity: </label>
+                <input class="input-box" type="number" name="quantity" id="quantity" />
             </div>
         </div>
         <div class="btn-div">
