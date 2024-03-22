@@ -11,7 +11,7 @@ body {
 .header-text {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .list-table {
@@ -26,7 +26,7 @@ body {
     tr:nth-child(even){background-color: lightgray}
 
     td {
-        font-size: 30px;
+        font-size: 25px;
         font-family: Arial, Helvetica, sans-serif;
     }
 }
@@ -36,7 +36,7 @@ body {
 }
 
 .list-header {
-    font-size: 30px;
+    font-size: 25px;
     background-color: maroon;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -49,6 +49,7 @@ body {
     background-color: transparent;
     color: maroon;
     padding: auto;
+    cursor: pointer;
 }
 
 .newItemForm {
@@ -73,7 +74,7 @@ body {
 
 .input-box {
     font-size: 30px;
-    width: 200px;
+    width: 180px;
     margin: 0px 15px;
     background-color: rgb(233, 233, 233);
     display: table-cell;
@@ -93,13 +94,25 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 15px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    font-size: 40px;
+    background-color: rgb(80, 0, 0);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
 }
 
 @media screen and (min-width: 900px) {
     .header-text {
         color: white;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 4rem;
+        font-size: 5rem;
     }
 
     .list-table {
