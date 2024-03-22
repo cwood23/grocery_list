@@ -1,6 +1,9 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -24,23 +27,24 @@
                 <td></td>
                 <td id="totalQuantity">0</td>
                 <td id="totalPrice">0</td>
+                <td></td>
             </tr>
         </tbody>
     </table>
 
     <br />
 
-    <form action="" id="newItemForm">
-        <div class="input-div">
-            <div>
+    <form action="" id="newItemForm" class="newItemForm">
+        <div class="inputs-div">
+            <div class="input-div">
                 <label class="input-label">Name: </label>
                 <input class="input-box" type="text" name="name" id="name" required />
             </div>
-            <div>
-                <label class="input-label">Price: $</label>
+            <div class="input-div">
+                <label class="input-label">($) Price: </label>
                 <input class="input-box" type="number" name="price" id="price" min="0" step=".01" />
             </div>
-            <div>
+            <div class="input-div">
                 <label class="input-label">Quantity: </label>
                 <input class="input-box" type="number" name="quantity" id="quantity" />
             </div>

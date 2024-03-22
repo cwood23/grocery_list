@@ -5,13 +5,13 @@ body {
 .page_header {
     background-color: maroon;
     text-align: center;
-    margin: 10px 20px;
+    margin: 10px auto;
 }
 
 .header-text {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 7rem;
+    font-size: 5rem;
 }
 
 .list-table {
@@ -26,7 +26,7 @@ body {
     tr:nth-child(even){background-color: lightgray}
 
     td {
-        font-size: 50px;
+        font-size: 30px;
         font-family: Arial, Helvetica, sans-serif;
     }
 }
@@ -36,7 +36,7 @@ body {
 }
 
 .list-header {
-    font-size: 80px;
+    font-size: 30px;
     background-color: maroon;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -51,29 +51,41 @@ body {
     padding: auto;
 }
 
-.input-div {
-    display: grid;
+.newItemForm {
+    display: table;
+}
+
+.inputs-div {
     row-gap: 20px;
 }
 
+.input-div {
+    display: table-row;
+    margin-bottom: 5px;
+}
+
 .input-label {
-    font-size: 50px;
+    font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
+    display: table-cell;
+    text-align: right;
 }
 
 .input-box {
-    font-size: 40px;
-    width: 300px;
+    font-size: 30px;
+    width: 200px;
     margin: 0px 15px;
     background-color: rgb(233, 233, 233);
+    display: table-cell;
 }
 
 .btn-div {
     text-align: center;
+    display: table-row;
 }
 
 .add-btn {
-    font-size: 50px;
+    font-size: 40px;
     background-color: maroon;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -81,4 +93,49 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 15px;
+}
+
+@media screen and (min-width: 900px) {
+    .header-text {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 4rem;
+    }
+
+    .list-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: auto;
+    
+        tr {
+            text-align: left;
+            background-color: white;
+        }
+        tr:nth-child(even){background-color: lightgray}
+    
+        td {
+            font-size: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
+
+    .list-header {
+        font-size: 40px;
+        background-color: maroon;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px;
+    }
+
+    .input-label {
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .input-box {
+        font-size: 30px;
+        width: 250px;
+        margin: 0px 15px;
+        background-color: rgb(233, 233, 233);
+    }
 }

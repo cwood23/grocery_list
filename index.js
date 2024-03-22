@@ -33,7 +33,7 @@ newItemForm.addEventListener("submit", (e) => {
     nameCell.innerHTML = item.name;
     priceCell.innerHTML = "$" + item.price;
     qtyCell.innerHTML = item.quantity;
-    totalCell.innerHTML = "$" + item.total;
+    totalCell.innerHTML = "$" + item.total.toFixed(2);
     deleteBtn.innerHTML = deleteBtnHTML;
 
     getTotals();
@@ -66,5 +66,5 @@ function getTotals() {
     });
 
     totalQuantityCell.textContent = totalQuantity;
-    totalPriceCell.textContent = "$" + totalPrice;
+    totalPriceCell.textContent = "$" + totalPrice.toFixed(2);
 }
