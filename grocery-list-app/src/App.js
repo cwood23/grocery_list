@@ -5,8 +5,8 @@ function App() {
   const [rows, setRows] = useState([]);
 
   const [itemName, setItemName] = useState('');
-  const [itemPrice, setItemPrice] = useState(-1.00);
-  const [itemQuantity, setItemQuantity] = useState(-1);
+  const [itemPrice, setItemPrice] = useState(0);
+  const [itemQuantity, setItemQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
 
@@ -17,6 +17,10 @@ function App() {
 
     setTotalPrice(parseFloat(totalPrice) + (parseFloat(itemPrice) * parseInt(itemQuantity)));
     setTotalQuantity(parseInt(totalQuantity) + parseInt(itemQuantity));
+
+    setItemName('');
+    setItemPrice(0);
+    setItemQuantity(0);
   }
 
   const removeRow = (rowId, rowPrice, rowQuantity) => {
@@ -79,15 +83,15 @@ function App() {
         <div className='inputs-div'>
           <div className='input-div'>
             <label className='input-label'>Name: </label>
-            <input className='input-box' type='text' name='name' id='name' required onChange={itemNameHandler} />
+            <input className='input-box' type='text' name='name' id='name' value={itemName} required onChange={itemNameHandler} />
           </div>
           <div className='input-div'>
             <label className='input-label'>($) Price: </label>
-            <input className='input-box' type='number' name='price' id='price' min='0' step='.01' onChange={itemPriceHandler} />
+            <input className='input-box' type='number' name='price' id='price' min='0' step='.01' value={itemPrice} onChange={itemPriceHandler} />
           </div>
           <div className='input-div'>
             <label className='input-label'>Quantity: </label>
-            <input className='input-box' type='number' name='quantity' id='quantity' onChange={itemQuantityHandler} />
+            <input className='input-box' type='number' name='quantity' id='quantity' value={itemQuantity} onChange={itemQuantityHandler} />
           </div>
         </div>
         <div className='btn-div'>
