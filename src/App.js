@@ -44,6 +44,9 @@ function App() {
 
   return (
     <div>
+      <nav>
+        
+      </nav>
       <div className='page_header'>
         <h1 className='header-text'>Grocery List</h1>
       </div>
