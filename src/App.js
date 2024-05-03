@@ -3,8 +3,11 @@ import './App.css';
 import Home from "./Components/Home/Home";
 import ItemAdd from "./Components/ItemAdd/ItemAdd";
 import RecipeAdd from "./Components/RecipeAdd/RecipeAdd";
+import axios from "axios";
 
 function App() {
+  axios.defaults.baseURL = 'http://localhost:3001'
+  
   return (
     <div className='App'>
       <BrowserRouter>
