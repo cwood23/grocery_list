@@ -97,7 +97,7 @@ function Home() {
           </div>
         </div>
         <div className='btn-div'>
-          <button className='add-btn' onClick={addRow}>Add Item</button>
+          <button className='add-btn' onClick={addRow}>Add Item to List</button>
         </div>
       </form>
 
