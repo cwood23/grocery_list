@@ -43,5 +43,5 @@ const Recipe = sequelize.define(
     modelName: 'Recipe'
 });
 
-Item.belongsToMany(Recipe, { through: 'RecipeItems' });
-Recipe.belongsToMany(Item, { through: 'RecipeItems' });
+Item.belongsToMany(Recipe, { through: 'RecipeItems', timestamps: false });
+Recipe.belongsToMany(Item, { through: 'RecipeItems', timestamps: false });
