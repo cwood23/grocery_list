@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from "./db.js";
 
-const Item = sequelize.define(
+export const Item = sequelize.define(
     'Item',
     {
         id: {
@@ -24,7 +24,7 @@ const Item = sequelize.define(
     modelName: 'Item'
 });
 
-const Recipe = sequelize.define(
+export const Recipe = sequelize.define(
     'Recipe',
     {
         id: {
