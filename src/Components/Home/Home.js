@@ -1,42 +1,49 @@
 import './Home.css';
 import React, { useState } from 'react';
-import NavHeader from '../Navbar/NavHeader.js'
+import axios from 'axios';
+import NavHeader from '../Navbar/NavHeader.js';
 
 function Home() {
   const [rows, setRows] = useState([]);
 
   const [itemName, setItemName] = useState('');
-  const [itemPrice, setItemPrice] = useState(0);
   const [itemQuantity, setItemQuantity] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
+
+  const [totalPrice, setTotalPrice] = useState(0.00);
   const [totalQuantity, setTotalQuantity] = useState(0);
 
-  const addRow = (e) => {
+  const addRow = async (e) => {
     e.preventDefault();
-    const newRow = { id: rows.length + 1, name: itemName, price: itemPrice, quantity: itemQuantity};
-    setRows([...rows, newRow]);
 
-    setTotalPrice(parseFloat(totalPrice) + (parseFloat(itemPrice) * parseInt(itemQuantity)));
-    setTotalQuantity(parseInt(totalQuantity) + parseInt(itemQuantity));
+    try {
+      const response = await axios.get(`/getitembyname?name=${itemName}`);
+      console.log(response.data);
+      const item = response.data;
+      const newRow = { id: rows.length + 1, name: item.name, price: item.price, quantity: itemQuantity };
+      setRows([...rows, newRow]);
+      const totalItemPrice = (item.price * parseInt(itemQuantity)).toFixed(2);
+      const ttlPrce = (parseFloat(totalPrice) + parseFloat(totalItemPrice)).toFixed(2);
+      setTotalPrice(ttlPrce);
+      setTotalQuantity(parseInt(totalQuantity) + parseInt(itemQuantity));
 
-    setItemName('');
-    setItemPrice(0);
-    setItemQuantity(0);
+      setItemName('');
+      setItemQuantity(0);
+    } catch (err) {
+      console.error("Error fetching item.", err);
+    }
   }
 
   const removeRow = (rowId, rowPrice, rowQuantity) => {
     setRows(rows.filter(row => row.id !== rowId));
+    const totalItemPrice = (parseFloat(rowPrice) * parseInt(rowQuantity)).toFixed(2);
+    const ttlPrce = (parseFloat(totalPrice) - parseFloat(totalItemPrice)).toFixed(2);
 
-    setTotalPrice(parseFloat(totalPrice) - (parseFloat(rowPrice) * parseInt(rowQuantity)));
+    setTotalPrice(ttlPrce);
     setTotalQuantity(parseInt(totalQuantity) - parseInt(rowQuantity));
   }
 
   const itemNameHandler = (e) => {
     setItemName(e.target.value);
-  }
-
-  const itemPriceHandler = (e) => {
-    setItemPrice(e.target.value);
   }
 
   const itemQuantityHandler = (e) => {
@@ -65,7 +72,7 @@ function Home() {
               <td>{row.name}</td>
               <td>${row.price}</td>
               <td>{row.quantity}</td>
-              <td>${row.price * row.quantity}</td>
+              <td>${(row.price * row.quantity).toFixed(2)}</td>
               <td><button className='delete-btn' onClick={() => removeRow(row.id, row.price, row.quantity)}>X</button></td>
             </tr>
           ))}
@@ -86,10 +93,6 @@ function Home() {
           <div className='input-div'>
             <label className='input-label'>Name: </label>
             <input className='input-box' type='text' name='name' id='name' value={itemName} required onChange={itemNameHandler} />
-          </div>
-          <div className='input-div'>
-            <label className='input-label'>($) Price: </label>
-            <input className='input-box' type='number' name='price' id='price' min='0' step='.01' value={itemPrice} onChange={itemPriceHandler} />
           </div>
           <div className='input-div'>
             <label className='input-label'>Quantity: </label>
