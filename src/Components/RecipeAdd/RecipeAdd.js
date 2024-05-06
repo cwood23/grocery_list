@@ -38,7 +38,7 @@ function RecipeAdd() {
             const response = await axios.post('/createnewrecipe', {
                 name: recipeName,
                 itemNames: itemList
-            })
+            });
             console.log(response);
             setRecipeName('');
             setItemName('');
