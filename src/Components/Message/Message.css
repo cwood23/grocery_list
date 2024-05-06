@@ -1,0 +1,19 @@
+.messageContainerError {
+    color: red;
+    border: 1px;
+    border-color: red;
+    border-radius: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+.messageContainerSuccess {
+    color: green;
+    border: 1px;
+    border-color: green;
+    border-radius: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
