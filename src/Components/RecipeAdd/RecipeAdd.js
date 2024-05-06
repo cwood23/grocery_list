@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import NavHeader from "../Navbar/NavHeader";
+import Message from "../Message/Message.js"
 import axios from 'axios';
 
 function RecipeAdd() {
     const [recipeName, setRecipeName] = useState('');
     const [itemName, setItemName] = useState('');
     const [itemList, setItemList] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleItemNameChange = (e) => {
         setItemName(e.target.value);
@@ -24,11 +26,10 @@ function RecipeAdd() {
         try {
             const response = await axios.get(`/getitembyname?name=${itemName}`);
             const item = response.data;
-            console.log(item.name);
             setItemList(prevItemList => [...prevItemList, item.name]);
             setItemName('');
         } catch (err) {
-            console.error("Error fetching item.", err);
+            setErrorMessage("Error adding item to recipe. Item may not exist in store.");
         }
     }
 
@@ -39,12 +40,15 @@ function RecipeAdd() {
                 name: recipeName,
                 itemNames: itemList
             });
-            console.log(response);
             setRecipeName('');
             setItemName('');
             setItemList([]);
         } catch (err) {
-            console.error("Error creating recipe.", err);
+            if (err.message === 'Request failed with status code 409') {
+                setErrorMessage('Recipe already exists')
+            } else {
+                setErrorMessage("Error creating recipe.");
+            }
         }
     }
 
@@ -54,6 +58,9 @@ function RecipeAdd() {
             <div className='page_header'>
                 <h1 className='header-text'>Create a New Recipe</h1>
             </div>
+            {errorMessage !== '' &&
+                <Message message={errorMessage} isError={true} />
+            }
             <div>
                 {itemList.map(item => (
                     <div>
