@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavHeader from "../Navbar/NavHeader";
-import Message from "../Message/Message.js"
+import Message from "../Message/Message.js";
 import axios from 'axios';
 
 function RecipeAdd() {

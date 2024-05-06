@@ -1,10 +1,12 @@
 import NavHeader from '../Navbar/NavHeader';
+import Message from "../Message/Message.js";
 import React, { useState } from 'react';
 import axios from 'axios';
 
 function ItemAdd() {
     const [itemName, setItemName] = useState('');
     const [itemPrice, setItemPrice] = useState(0);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleNameChange = (e) => {
         setItemName(e.target.value);
@@ -24,12 +26,12 @@ function ItemAdd() {
             });
             console.log(response);
             setItemName('');
-            setItemPrice(0.00);
+            setItemPrice(0);
         } catch (err) {
-            if (err.response.status === 409) {
-                console.log("Item already exists.")
+            if (err.message === 'Request failed with status code 409') {
+                setErrorMessage('Item already exists.')
             } else {
-                console.error("Error creating item.", err);
+                setErrorMessage("Error creating recipe.");
             }
         }
     }
@@ -40,6 +42,9 @@ function ItemAdd() {
             <div className='page_header'>
                 <h1 className='header-text'>Add a New Item to Store</h1>
             </div>
+            {errorMessage !== '' &&
+                <Message message={errorMessage} isError={true} />
+            }
             <form id='newItemForm' className='newItemForm'>
                 <div className='inputs-div'>
                     <div className='input-div'>
