@@ -52,6 +52,15 @@ body {
   cursor: pointer;
 }
 
+.delete-item-btn {
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+  color: maroon;
+  padding: auto;
+  cursor: pointer;
+}
+
 .newItemForm {
   display: table;
 }
