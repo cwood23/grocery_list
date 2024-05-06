@@ -28,7 +28,7 @@ export const getRecipeByName = async (req, res) => {
 export const createNewRecipe = async (req, res) => {
     const { name, itemIds } = req.body;
     try {
-        const recipe = await Recipe.findAll({ where: { name: name } });
+        const recipe = await Recipe.findOne({ where: { name: name } });
         if (recipe) {
             res.status(409).send("Recipe already exists.");
         } else {
@@ -39,7 +39,7 @@ export const createNewRecipe = async (req, res) => {
             );
             if (newRecipe) {
                 await Promise.all(itemIds.map(async (itemId) => {
-                    var item = Item.findByPk(itemId);
+                    var item = await Item.findByPk(itemId);
                     await newRecipe.addItem(item);
                 }));
             }

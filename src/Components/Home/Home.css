@@ -51,9 +51,20 @@ body {
     padding: auto;
     cursor: pointer;
   }
+
+  .input-table {
+    display: table;
+    margin-left: 250px;
+  }
   
   .newItemForm {
-    display: table;
+    display: table-column;
+    float: left;
+  }
+
+  .recipeForm {
+    display: table-column;
+    float: left;
   }
   
   .inputs-div {
@@ -82,15 +93,15 @@ body {
   
   .btn-div {
     text-align: center;
-    display: table-row;
+    display: table-cell;
+    float: right;
   }
   
   .add-btn {
-    font-size: 30px;
+    font-size: 20px;
     background-color: maroon;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 20px;
     padding: 10px 20px;
     border: none;
     border-radius: 15px;
@@ -150,5 +161,17 @@ body {
         width: 250px;
         margin: 0px 15px;
         background-color: rgb(233, 233, 233);
+    }
+  
+    .add-btn {
+      font-size: 30px;
+      background-color: maroon;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      float: right;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
     }
   }

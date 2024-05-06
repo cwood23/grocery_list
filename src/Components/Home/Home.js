@@ -8,29 +8,51 @@ function Home() {
 
   const [itemName, setItemName] = useState('');
   const [itemQuantity, setItemQuantity] = useState(0);
+  const [recipeName, setRecipeName] = useState('');
 
   const [totalPrice, setTotalPrice] = useState(0.00);
   const [totalQuantity, setTotalQuantity] = useState(0);
 
-  const addRow = async (e) => {
+  const getItem = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.get(`/getitembyname?name=${itemName}`);
       console.log(response.data);
       const item = response.data;
-      const newRow = { id: rows.length + 1, name: item.name, price: item.price, quantity: itemQuantity };
-      setRows([...rows, newRow]);
-      const totalItemPrice = (item.price * parseInt(itemQuantity)).toFixed(2);
-      const ttlPrce = (parseFloat(totalPrice) + parseFloat(totalItemPrice)).toFixed(2);
-      setTotalPrice(ttlPrce);
-      setTotalQuantity(parseInt(totalQuantity) + parseInt(itemQuantity));
-
-      setItemName('');
-      setItemQuantity(0);
+      addRow(item.name, item.price, itemQuantity);
     } catch (err) {
       console.error("Error fetching item.", err);
     }
+  }
+
+  const getRecipeItems = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`/getrecipebyname?name=${recipeName}`);
+      console.log(response.data);
+      const items = response.data[0].Items;
+      console.log(items);
+      await Promise.all(items.map(async (item) => {
+        await addRow(item.name, item.price, 1);
+      }));
+    } catch (err) {
+      console.error("Error fetching recipe.", err);
+    }
+  }
+
+  const addRow = async (itemName, itemPrice, itemQtty) => {
+    console.log(itemName);
+    const totalItemPrice = (itemPrice * parseInt(itemQtty)).toFixed(2);
+    
+    setTotalPrice(prevTotalPrice => (parseFloat(prevTotalPrice) + parseFloat(totalItemPrice)).toFixed(2));
+    setTotalQuantity(prevTotalQuantity => prevTotalQuantity + parseInt(itemQtty));
+  
+    setRows(prevRows => [...prevRows, { id: prevRows.length + 1, name: itemName, price: itemPrice, quantity: itemQtty }]);
+  
+    setItemName('');
+    setItemQuantity(0);
+
+    setRecipeName('');
   }
 
   const removeRow = (rowId, rowPrice, rowQuantity) => {
@@ -44,6 +66,10 @@ function Home() {
 
   const itemNameHandler = (e) => {
     setItemName(e.target.value);
+  }
+
+  const recipeNameHandler = (e) => {
+    setRecipeName(e.target.value);
   }
 
   const itemQuantityHandler = (e) => {
@@ -88,23 +114,35 @@ function Home() {
 
       <br />
 
-      <form action='' id='newItemForm' className='newItemForm'>
-        <div className='inputs-div'>
-          <div className='input-div'>
-            <label className='input-label'>Name: </label>
-            <input className='input-box' type='text' name='name' id='name' value={itemName} required onChange={itemNameHandler} />
+      <div className="input-table">
+        <form action='' id='newItemForm' className='newItemForm'>
+          <div className='inputs-div'>
+            <div className='input-div'>
+              <label className='input-label'>Item Name: </label>
+              <input className='input-box' type='text' name='name' id='name' value={itemName} required onChange={itemNameHandler} />
+            </div>
+            <div className='input-div'>
+              <label className='input-label'>Quantity: </label>
+              <input className='input-box' type='number' name='quantity' id='quantity' value={itemQuantity} onChange={itemQuantityHandler} />
+            </div>
           </div>
-          <div className='input-div'>
-            <label className='input-label'>Quantity: </label>
-            <input className='input-box' type='number' name='quantity' id='quantity' value={itemQuantity} onChange={itemQuantityHandler} />
+          <div className='btn-div'>
+            <button className='add-btn' onClick={getItem}>Add Item to List</button>
           </div>
-        </div>
-        <div className='btn-div'>
-          <button className='add-btn' onClick={addRow}>Add Item to List</button>
-        </div>
-      </form>
+        </form>
 
-      <p>Get the code <a href='https://github.com/cwood23/grocery_list_app'>here</a></p>
+        <form action='' id='recipeForm' className='recipeForm'>
+          <div className='inputs-div'>
+            <div className='input-div'>
+              <label className='input-label'>Recipe Name: </label>
+              <input className='input-box' type='text' name='name' id='name' value={recipeName} required onChange={recipeNameHandler} />
+            </div>
+          </div>
+          <div className='btn-div'>
+            <button className='add-btn' onClick={getRecipeItems}>Add Recipe Items to List</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
