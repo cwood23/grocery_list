@@ -26,7 +26,7 @@ export const getRecipeByName = async (req, res) => {
 
 // Create new recipe
 export const createNewRecipe = async (req, res) => {
-    const { name, itemIds } = req.body;
+    const { name, itemNames } = req.body;
     try {
         const recipe = await Recipe.findOne({ where: { name: name } });
         if (recipe) {
@@ -38,10 +38,10 @@ export const createNewRecipe = async (req, res) => {
                 }
             );
             if (newRecipe) {
-                await Promise.all(itemIds.map(async (itemId) => {
-                    var item = await Item.findByPk(itemId);
-                    await newRecipe.addItem(item);
-                }));
+                itemNames.forEach(async (itemName) => {
+                    const item = await Item.findOne({ where: { name: itemName } });
+                    newRecipe.addItem(item);
+                })
             }
             res.status(201).send("Recipe successfully created.");
         }

@@ -23,6 +23,8 @@ function ItemAdd() {
                 price: itemPrice
             });
             console.log(response);
+            setItemName('');
+            setItemPrice(0.00);
         } catch (err) {
             if (err.response.status === 409) {
                 console.log("Item already exists.")
@@ -42,11 +44,11 @@ function ItemAdd() {
                 <div className='inputs-div'>
                     <div className='input-div'>
                         <label className='input-label'>Name: </label>
-                        <input className='input-box' type='text' name='name' id='name' required onChange={handleNameChange} />
+                        <input className='input-box' type='text' name='name' id='name' value={itemName} required onChange={handleNameChange} />
                     </div>
                     <div className='input-div'>
                         <label className='input-label'>($) Price: </label>
-                        <input className='input-box' type='number' name='price' id='price' min='0' step='.01' onChange={handlePriceChange} />
+                        <input className='input-box' type='number' name='price' id='price' min='0' step='.01' value={itemPrice} onChange={handlePriceChange} />
                     </div>
                 </div>
                 <div className='btn-div'>

@@ -19,7 +19,7 @@ function Home() {
       const response = await axios.get(`/getitembyname?name=${itemName}`);
       console.log(response.data);
       const item = response.data;
-      addRow(item.name, item.price, itemQuantity);
+      addRow(item.name, item.price.toFixed(2), itemQuantity);
     } catch (err) {
       console.error("Error fetching item.", err);
     }
@@ -33,7 +33,7 @@ function Home() {
       const items = response.data[0].Items;
       console.log(items);
       await Promise.all(items.map(async (item) => {
-        await addRow(item.name, item.price, 1);
+        await addRow(item.name, item.price.toFixed(2), 1);
       }));
     } catch (err) {
       console.error("Error fetching recipe.", err);
